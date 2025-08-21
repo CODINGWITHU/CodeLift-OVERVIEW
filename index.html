@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLift - Market Research & Investor Presentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .nav-item {
+            position: relative;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+            color: white;
+            border-radius: 16px;
+            padding: 24px;
+        }
+        
+        .competitor-logo {
+            height: 40px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .competitor-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .impact-stat {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        .section {
+            scroll-margin-top: 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 16px;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-12">
+            <div class="flex items-center">
+                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center text-white mr-4">
+                    <i class="fas fa-laptop-code text-2xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-slate-800">CodeLift</h1>
+            </div>
+            <div class="flex space-x-2">
+                <button class="px-4 py-2 bg-white text-blue-600 rounded-lg font-medium shadow">Save Draft</button>
+                <button class="px-4 py-2 gradient-bg text-white rounded-lg font-medium shadow">Download PDF</button>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-12 gap-8">
+            <!-- Navigation -->
+            <div class="col-span-3">
+                <div class="card p-6 sticky top-6">
+                    <h2 class="text-lg font-semibold mb-4">Presentation Outline</h2>
+                    <ul class="space-y-1">
+                        <li class="nav-item active" onclick="showSection('hero')"><i class="fas fa-home mr-2"></i> Introduction</li>
+                        <li class="nav-item" onclick="showSection('market-overview')"><i class="fas fa-chart-line mr-2"></i> Market Overview</li>
+                        <li class="nav-item" onclick="showSection('target-audience')"><i class="fas fa-bullseye mr-2"></i> Target Audience</li>
+                        <li class="nav-item" onclick="showSection('competitor-analysis')"><i class="fas fa-users mr-2"></i> Competitor Analysis</li>
+                        <li class="nav-item" onclick="showSection('value-proposition')"><i class="fas fa-crown mr-2"></i> Value Proposition</li>
+                        <li class="nav-item" onclick="showSection('market-strategy')"><i class="fas fa-road mr-2"></i> Go-to-Market Strategy</li>
+                        <li class="nav-item" onclick="showSection('financials')"><i class="fas fa-chart-pie mr-2"></i> Financial Projections</li>
+                        <li class="nav-item" onclick="showSection('impact')"><i class="fas fa-handshake mr-2"></i> Social Impact</li>
+                        <li class="nav-item" onclick="showSection('funding')"><i class="fas fa-rocket mr-2"></i> Funding Requirements</li>
+                    </ul>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-sm font-semibold text-slate-500 mb-2">Document Details</h3>
+                        <div class="text-xs text-slate-600 space-y-1">
+                            <div>Created: Nov 15, 2023</div>
+                            <div>Last Modified: Today</div>
+                            <div>Author: CodeLift Team</div>
+                            <div>Status: <span class="text-green-600">Ready for Review</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-span-9">
+                <!-- Hero Section -->
+                <section id="hero" class="section hero p-8 mb-8 text-white">
+                    <div class="max-w-2xl">
+                        <h1 class="text-4xl font-bold mb-4">CodeLift: Igniting Student Innovation</h1>
+                        <p class="text-xl mb-6">The first platform that connects student talent with real-world projects, providing verified experience and pathways to employment.</p>
+                        <div class="flex space-x-4">
+                            <button class="px-6 py-3 bg-white text-blue-600 rounded-lg font-bold shadow-lg">Request Full Deck</button>
+                            <button class="px-6 py-3 border-2 border-white text-white rounded-lg font-bold">Watch Video</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Market Overview -->
+                <section id="market-overview" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Market Overview</h2>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="stat-card">
+                            <div class="text-3xl font-bold">$12.6B</div>
+                            <div class="text-sm opacity-90">Global EdTech Market Size (2023)</div>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>
+                                <span>16.5% CAGR (2023-2030)</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="text-3xl font-bold">235M</div>
+                            <div class="text-sm opacity-90">University Students Worldwide</div>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>
+                                <span>4.3% Annual Growth</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">The $300B Opportunity</h3>
+                        <p class="text-slate-600 mb-4">Companies spend over $300 billion annually on training and onboarding new hires. CodeLift reduces this cost by providing job-ready candidates with verified experience.</p>
+                        <p class="text-slate-600 mb-4">The transition from academia to industry remains challenging for students. Traditional education often fails to provide:</p>
+                        <ul class="list-disc list-inside text-slate-600 space-y-2">
+                            <li>Real-world collaboration experience</li>
+                            <li>Verified proof of work beyond grades</li>
+                            <li>Professional networking opportunities</li>
+                            <li>Pathways to monetize skills during studies</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Solution Overview</h3>
+                        <p class="text-slate-600">CodeLift bridges the gap between academia and industry by providing a platform where students can collaborate on projects, build verifiable portfolios, gain recognition, and monetize their skills—all while still in school.</p>
+                    </div>
+                </section>
+                
+                <!-- Target Audience -->
+                <section id="target-audience" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Target Audience</h2>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="bg-blue-50 p-4 rounded-xl">
+                            <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white mb-3">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">University Students</h3>
+                            <p class="text-sm text-slate-600">Seeking practical experience, portfolio building, and networking</p>
+                            <div class="mt-2 text-xs text-blue-600">Addressable: 235M globally</div>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-xl">
+                            <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white mb-3">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">Recruiters & Employers</h3>
+                            <p class="text-sm text-slate-600">Looking for talent with verified skills and project experience</p>
+                            <div class="mt-2 text-xs text-purple-600">Addressable: 2M+ companies</div>
+                        </div>
+                        <div class="bg-cyan-50 p-4 rounded-xl">
+                            <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white mb-3">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">Educational Institutions</h3>
+                            <p class="text-sm text-slate-600">Seeking to improve student outcomes and employment rates</p>
+                            <div class="mt-2 text-xs text-cyan-600">Addressable: 30,000+ globally</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-6 rounded-xl">
+                        <h3 class="text-lg font-semibold mb-4">Market Segmentation</h3>
+                        <canvas id="marketSegmentationChart" height="150"></canvas>
+                    </div>
+                </section>
+                
+                <!-- Competitor Analysis -->
+                <section id="competitor-analysis" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Competitor Analysis</h2>
+                    
+                    <div class="flex justify-around items-center mb-8 py-4 bg-slate-50 rounded-xl">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="competitor-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png" class="competitor-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Upwork_Logo.svg/2560px-Upwork_Logo.svg.png" class="competitor-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Freelancer_logo_2013.svg/2560px-Freelancer_logo_2013.svg.png" class="competitor-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/AngelList_logo.png/640px-AngelList_logo.png" class="competitor-logo">
+                    </div>
+                    
+                    <div class="overflow-x-auto mb-8">
+                        <table class="w-full text-sm text-left">
+                            <thead class="text-xs uppercase bg-slate-100">
+                                <tr>
+                                    <th class="px-4 py-3">Platform</th>
+                                    <th class="px-4 py-3">Focus</th>
+                                    <th class="px-4 py-3">Strengths</th>
+                                    <th class="px-4 py-3">Weaknesses</th>
+                                    <th class="px-4 py-3">Gaps</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="px-4 py-3 font-medium">LinkedIn</td>
+                                    <td class="px-4 py-3">Professional Networking</td>
+                                    <td class="px-4 py-3">Large user base, recruiter presence</td>
+                                    <td class="px-4 py-3">Passive, no collaboration tools</td>
+                                    <td class="px-4 py-3">No project collaboration features</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="px-4 py-3 font-medium">GitHub</td>
+                                    <td class="px-4 py-3">Code Repository</td>
+                                    <td class="px-4 py-3">Developer community, code hosting</td>
+                                    <td class="px-4 py-3">Technical, no non-tech roles</td>
+                                    <td class="px-4 py-3">Doesn't prove teamwork or soft skills</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="px-4 py-3 font-medium">Upwork/Freelancer</td>
+                                    <td class="px-4 py-3">Freelance Marketplace</td>
+                                    <td class="px-4 py-3">Monetization, project-based</td>
+                                    <td class="px-4 py-3">Transaction-focused, high fees</td>
+                                    <td class="px-4 py-3">Not designed for student collaboration</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-medium">AngelList</td>
+                                    <td class="px-4 py-3">Startup Job Market</td>
+                                    <td class="px-4 py-3">Startup-focused, funding options</td>
+                                    <td class="px-4 py-3">Not for students, limited to jobs</td>
+                                    <td class="px-4 py-3">No project collaboration features</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <h3 class="text-lg font-semibold mb-4">Competitive Advantage Analysis</h3>
+                        <canvas id="competitiveChart" height="200"></canvas>
+                    </div>
+                </section>
+                
+                <!-- Unique Value Proposition -->
+                <section id="value-proposition" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Unique Value Proposition</h2>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-3">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <h3 class="font-semibold">Verified Project Proof</h3>
+                            </div>
+                            <p class="text-sm text-slate-600">Blockchain-backed certificates and verifiable project evidence that proves real teamwork experience.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mr-3">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h3 class="font-semibold">AI Teammate Matching</h3>
+                            </div>
+                            <p class="text-sm text-slate-600">Advanced algorithms suggest ideal team members based on skills, personality, and past collaboration success.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 mr-3">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <h3 class="font-semibold">Monetization Ecosystem</h3>
+                            </div>
+                            <p class="text-sm text-slate-600">Students can monetize open-source work, earn stipends, and access micro-tasks for immediate income.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-3">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                                <h3 class="font-semibold">Gamified Learning</h3>
+                            </div>
+                            <p class="text-sm text-slate-600">Badges, leaderboards, and achievements that motivate consistent participation and skill development.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-xl mb-8">
+                        <h3 class="text-lg font-semibold mb-4">Why Now? The Perfect Storm</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-semibold text-blue-700 mb-2">Market Trends</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-700">
+                                    <li>Remote collaboration is now mainstream</li>
+                                    <li>Skills-based hiring is growing 40% YoY</li>
+                                    <li>The gig economy is valued at $347B</li>
+                                    <li>80% of employers value experience over grades</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-purple-700 mb-2">Technology Enablers</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-700">
+                                    <li>AI matching algorithms are now sophisticated</li>
+                                    <li>Blockchain enables verifiable credentials</li>
+                                    <li>Cloud computing reduces infrastructure costs</li>
+                                    <li>WebRTC enables seamless collaboration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Powerful Differentiators</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-semibold text-blue-600 mb-2">From Learning to Earning</h4>
+                            <p class="text-slate-600">We're the first platform that allows students to monetize their skills while building verifiable experience, creating a powerful flywheel effect.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-semibold text-blue-600 mb-2">The Trust Engine</h4>
+                            <p class="text-slate-600">Our verification system provides immutable proof of work and skills, solving the biggest problem in hiring - trust in credentials.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-semibold text-blue-600 mb-2">The Talent Pipeline</h4>
+                            <p class="text-slate-600">We're building the largest pipeline of job-ready talent with verified experience, becoming indispensable to employers.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Go-to-Market Strategy -->
+                <section id="market-strategy" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Go-to-Market Strategy</h2>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="bg-blue-50 p-5 rounded-xl">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h3 class="font-semibold text-center mb-2">University Partnerships</h3>
+                            <p class="text-sm text-slate-600 text-center">Integrate with career centers and faculty to become part of the curriculum</p>
+                        </div>
+                        <div class="bg-purple-50 p-5 rounded-xl">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3 class="font-semibold text-center mb-2">Hackathon Sponsorship</h3>
+                            <p class="text-sm text-slate-600 text-center">Sponsor and host hackathons to acquire high-quality users</p>
+                        </div>
+                        <div class="bg-cyan-50 p-5 rounded-xl">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h3 class="font-semibold text-center mb-2">Campus Ambassador Program</h3>
+                            <p class="text-sm text-slate-600 text-center">Leverage student influencers to drive adoption</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">Growth Timeline</h3>
+                    <div class="relative mb-8">
+                        <div class="absolute left-4 top-0 bottom-0 w-1 bg-blue-200"></div>
+                        
+                        <div class="relative pl-12 pb-8">
+                            <div class="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">1</div>
+                            <h4 class="font-semibold">Phase 1: MVP Launch (Q1 2024)</h4>
+                            <p class="text-sm text-slate-600">Launch with 3 pilot universities, focus on core functionality</p>
+                        </div>
+                        
+                        <div class="relative pl-12 pb-8">
+                            <div class="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">2</div>
+                            <h4 class="font-semibold">Phase 2: Scale (Q2-Q3 2024)</h4>
+                            <p class="text-sm text-slate-600">Expand to 50 universities, add monetization features</p>
+                        </div>
+                        
+                        <div class="relative pl-12">
+                            <div class="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">3</div>
+                            <h4 class="font-semibold">Phase 3: Enterprise (Q4 2024)</h4>
+                            <p class="text-sm text-slate-600">Launch recruiter dashboard and enterprise features</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">Customer Acquisition Strategy</h3>
+                    <div class="bg-slate-50 p-5 rounded-xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="font-medium">Channel</div>
+                            <div class="font-medium">Cost</div>
+                            <div class="font-medium">Expected CAC</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                            <div>University Partnerships</div>
+                            <div>Low</div>
+                            <div>$5-10</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                            <div>Content Marketing</div>
+                            <div>Medium</div>
+                            <div>$15-20</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3">
+                            <div>Social & Community</div>
+                            <div>Low</div>
+                            <div>$8-12</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Financial Projections -->
+                <section id="financials" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Financial Projections</h2>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="stat-card">
+                            <div class="text-3xl font-bold">$3.2M</div>
+                            <div class="text-sm opacity-90">Year 3 Revenue</div>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>
+                                <span>92% CAGR</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="text-3xl font-bold">45%</div>
+                            <div class="text-sm opacity-90">Gross Margin</div>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>
+                                <span>Scaling to 60%+</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="text-3xl font-bold">18 Months</div>
+                            <div class="text-sm opacity-90">To Profitability</div>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-flag mr-1"></i>
+                                <span>With current burn</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">Revenue Streams</h3>
+                    <div class="bg-slate-50 p-5 rounded-xl mb-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="font-medium">Stream</div>
+                            <div class="font-medium">Year 1</div>
+                            <div class="font-medium">Year 2</div>
+                            <div class="font-medium">Year 3</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                            <div>Premium Subscriptions</div>
+                            <div>$120K</div>
+                            <div>$650K</div>
+                            <div>$1.8M</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                            <div>Recruiter Access Fees</div>
+                            <div>$40K</div>
+                            <div>$350K</div>
+                            <div>$900K</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3">
+                            <div>Transaction Commission</div>
+                            <div>$20K</div>
+                            <div>$200K</div>
+                            <div>$500K</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">User Growth Projection</h3>
+                    <div class="bg-white p-4 rounded-xl shadow">
+                        <canvas id="userGrowthChart" height="150"></canvas>
+                    </div>
+                </section>
+                
+                <!-- Social Impact -->
+                <section id="impact" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Social Impact & Vision</h2>
+                    
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-xl text-white mb-8">
+                        <h3 class="text-xl font-bold mb-4">Democratizing Opportunity</h3>
+                        <p class="mb-4">CodeLift isn't just a platform—it's a movement to democratize career opportunities for students regardless of their background, university, or connections.</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 mt-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold">10M+</div>
+                                <div class="text-sm">Students Impacted by 2027</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold">$500M+</div>
+                                <div class="text-sm">Earned by Students</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold">50%</div>
+                                <div class="text-sm">Reduction in Hiring Time</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">Testimonials</h3>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="testimonial-card p-5">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-3">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Sarah Chen</h4>
+                                    <p class="text-xs text-slate-500">Computer Science Student</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-700">"CodeLift helped me build a portfolio that got me hired at Google. I earned $3,500 while still in school and made connections that changed my career."</p>
+                        </div>
+                        
+                        <div class="testimonial-card p-5">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-3">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Michael Roberts</h4>
+                                    <p class="text-xs text-slate-500">Tech Recruiter</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-700">"The verification system on CodeLift saves us countless hours in the hiring process. We can trust that candidates have the skills they claim."</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">Our Vision</h3>
+                    <div class="bg-blue-50 p-5 rounded-xl">
+                        <p class="text-slate-700 mb-4">We envision a world where:</p>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Every student can gain real-world experience regardless of their background</li>
+                            <li>Skills and capabilities matter more than degrees or pedigree</li>
+                            <li>The gap between education and employment is eliminated</li>
+                            <li>Students are empowered to monetize their skills from day one</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Funding Requirements -->
+                <section id="funding" class="section card p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Funding Requirements</h2>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="stat-card">
+                            <div class="text-3xl font-bold">$1.5M</div>
+                            <div class="text-sm opacity-90">Seed Round</div>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-calendar mr-1"></i>
+                                <span>18-24 month runway</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="text-3xl font-bold">15%</div>
+                            <div class="text-sm opacity-90">Equity Available</div>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-chart-pie mr-1"></i>
+                                <span>Post-money valuation: $10M</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">Use of Funds</h3>
+                    <div class="bg-slate-50 p-5 rounded-xl mb-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="font-medium">Area</div>
+                            <div class="font-medium">Percentage</div>
+                            <div class="font-medium">Amount</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                            <div>Product Development</div>
+                            <div>45%</div>
+                            <div>$675K</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                            <div>Marketing & User Acquisition</div>
+                            <div>30%</div>
+                            <div>$450K</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                            <div>Team Expansion</div>
+                            <div>20%</div>
+                            <div>$300K</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-3">
+                            <div>Legal & Operations</div>
+                            <div>5%</div>
+                            <div>$75K</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">Milestones</h3>
+                    <div class="bg-white p-5 rounded-xl shadow">
+                        <div class="flex mb-4">
+                            <div class="w-1/4 font-semibold">Funding</div>
+                            <div class="w-1/4 font-semibold">Product</div>
+                            <div class="w-1/4 font-semibold">Users</div>
+                            <div class="w-1/4 font-semibold">Revenue</div>
+                        </div>
+                        
+                        <div class="flex py-3 border-b border-slate-200">
+                            <div class="w-1/4">Seed Round</div>
+                            <div class="w-1/4">MVP Launch</div>
+                            <div class="w-1/4">10,000 Students</div>
+                            <div class="w-1/4">$15K MRR</div>
+                        </div>
+                        
+                        <div class="flex py-3 border-b border-slate-200">
+                            <div class="w-1/4">Series A</div>
+                            <div class="w-1/4">AI Features</div>
+                            <div class="w-1/4">100,000 Students</div>
+                            <div class="w-1/4">$150K MRR</div>
+                        </div>
+                        
+                        <div class="flex py-3">
+                            <div class="w-1/4">Series B</div>
+                            <div class="w-1/4">Global Expansion</div>
+                            <div class="w-1/4">1M+ Students</div>
+                            <div class="w-1/4">$1.5M MRR</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Call to Action -->
+                <div class="bg-gradient-to-r from-blue-600 to-purple-700 rounded-xl p-8 text-center text-white">
+                    <h2 class="text-2xl font-bold mb-4">Join Us in Revolutionizing Student Opportunities</h2>
+                    <p class="mb-6 max-w-2xl mx-auto">We're seeking visionary investors who believe in our mission to bridge the gap between education and employment.</p>
+                    <div class="flex justify-center space-x-4">
+                        <button class="px-6 py-3 bg-white text-blue-600 rounded-lg font-bold shadow-lg">Request Full Deck</button>
+                        <button class="px-6 py-3 border-2 border-white text-white rounded-lg font-bold">Schedule Meeting</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Market Segmentation Chart
+        const segCtx = document.getElementById('marketSegmentationChart').getContext('2d');
+        new Chart(segCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Computer Science', 'Engineering', 'Business', 'Design', 'Other'],
+                datasets: [{
+                    data: [45, 25, 15, 10, 5],
+                    backgroundColor: ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+        
+        // Competitive Advantage Chart
+        const compCtx = document.getElementById('competitiveChart').getContext('2d');
+        new Chart(compCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Project Verification', 'Team Collaboration', 'Skill Development', 'Monetization', 'Recruiter Access', 'Ease of Use'],
+                datasets: [
+                    {
+                        label: 'CodeLift',
+                        data: [9, 8, 9, 8, 7, 8],
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        pointBackgroundColor: 'rgb(59, 130, 246)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(59, 130, 246)'
+                    },
+                    {
+                        label: 'Competitors (Avg)',
+                        data: [3, 5, 4, 6, 7, 6],
+                        fill: true,
+                        backgroundColor: 'rgba(100, 116, 139, 0.2)',
+                        borderColor: 'rgb(100, 116, 139)',
+                        pointBackgroundColor: 'rgb(100, 116, 139)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(100, 116, 139)'
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                }
+            }
+        });
+        
+        // User Growth Chart
+        const growthCtx = document.getElementById('userGrowthChart').getContext('2d');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025', 'Q2 2025'],
+                datasets: [{
+                    label: 'Active Users',
+                    data: [5000, 15000, 35000, 70000, 120000, 200000],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).style.display = 'block';
+            
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find and activate the clicked nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item.textContent.includes(sectionId.replace('-', ' '))) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Scroll to section
+            document.getElementById(sectionId).scrollIntoView({behavior: 'smooth'});
+        }
+        
+        // Initialize page with hero section visible
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show all sections initially
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

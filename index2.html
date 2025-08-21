@@ -1,0 +1,563 @@
+# CodeLift: Connect & Create Platform - Investor Presentation
+
+I'll convert the PDF content into a comprehensive HTML presentation with modern styling, keeping all the details and enhancing them for investor presentation.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLift: Connect & Create Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .nav-item {
+            position: relative;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: #4361ee;
+            color: white;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 16px;
+            padding: 24px;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .phase-timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--primary);
+            margin-left: 15px;
+        }
+        
+        .phase-timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .phase-timeline-item:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            left: -32px;
+            top: 5px;
+        }
+        
+        .tech-stack-item {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-stack-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .competitor-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .competitor-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .platform-differentiator {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center text-white mr-3">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <span class="font-bold text-xl text-slate-800">CodeLift</span>
+                </div>
+                <div class="hidden md:flex space-x-1">
+                    <a href="#intro" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-blue-50">Intro</a>
+                    <a href="#concept" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-blue-50">Concept</a>
+                    <a href="#features" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-blue-50">Features</a>
+                    <a href="#tech" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-blue-50">Technology</a>
+                    <a href="#roadmap" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-blue-50">Roadmap</a>
+                    <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-blue-50">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-slate-700"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Introduction Section -->
+        <section id="intro" class="section">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="hero gradient-bg rounded-2xl p-8 md:p-12 text-white">
+                    <div class="max-w-2xl">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">CodeLift: Connect & Create Platform</h1>
+                        <p class="text-xl mb-6">Igniting Student Innovation through Collaboration</p>
+                        <p class="mb-8">A groundbreaking platform designed to empower university students, foster innovation, and bridge the gap between academic learning and real-world industry experience.</p>
+                        <div class="flex space-x-4">
+                            <button class="px-6 py-3 bg-white text-blue-600 rounded-lg font-bold shadow-lg "onclick="requestFullDeck()">Request Full Deck</button>
+                            <button class="px-6 py-3 border-2 border-white text-white rounded-lg font-bold">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Concept Section -->
+        <section id="concept" class="section bg-white">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2 class="text-3xl font-bold text-center mb-12">The Core Concept: Fueling Student Innovation</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <div class="card p-6 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Idea to Incubation</h3>
+                        <p class="text-slate-600">Students post startup ideas or project concepts, acting as project hosts. Centralizes the ideation phase, making it simple for ideas to find a team.</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Talent Acquisition</h3>
+                        <p class="text-slate-600">Students browse projects and apply for roles. They showcase their skills, resumes, and portfolios directly within the platform.</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Seamless Collaboration</h3>
+                        <p class="text-slate-600">Integrated chat, task management, and file-sharing tools create a cohesive workspace for effective project execution.</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Showcase & Credibility</h3>
+                        <p class="text-slate-600">Completed projects are showcased on user profiles as verified 'proof of work'. Ratings and certificates boost credibility for job opportunities.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <p class="text-lg text-slate-800">This platform transcends traditional academic boundaries, offering a dynamic ecosystem where theoretical knowledge transforms into tangible outcomes, preparing students for the professional landscape.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+        <section id="features" class="section">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2 class="text-3xl font-bold text-center mb-12">Key Features: Empowering Student Innovation</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 gradient-text">Project Posting & Team Building</h3>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Student founders post projects, defining roles (developer, designer, marketer)</li>
+                            <li>Interested students apply; hosts review profiles and accept/reject applications</li>
+                            <li>Skills-based matching algorithm</li>
+                            <li>Project categorization and tagging system</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 gradient-text">Collaboration Tools</h3>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Integrated task assignment dashboard (Trello-like)</li>
+                            <li>Group chat and 1:1 direct messaging</li>
+                            <li>Secure file sharing with GitHub and cloud drive integrations</li>
+                            <li>Real-time notifications via WebSockets</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 gradient-text">Monetization & Recognition</h3>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Hosts can reward contributors with stipends, tokens, or gift cards</li>
+                            <li>Automated, shareable Certificates of Completion</li>
+                            <li>Star Ratings & Badges (e.g., 'Top Frontend Dev', 'Fast Learner')</li>
+                            <li>Marketplace for monetizing open-source contributions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 gradient-text">Profile & Resume System</h3>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Comprehensive portfolio-like profiles with skills and experience</li>
+                            <li>Showcase completed projects with verified proof</li>
+                            <li>Ratings and reviews from past collaborations</li>
+                            <li>Integration with GitHub and LinkedIn</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 gradient-text">Gamification</h3>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Leaderboards for top contributors</li>
+                            <li>Unlockable badges for achievements</li>
+                            <li>Daily/weekly hackathons</li>
+                            <li>Experience points and leveling system</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 gradient-text">Analytics & Insights</h3>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Track project progress with milestones</li>
+                            <li>Recruiter dashboard with verified project experience</li>
+                            <li>Skill development tracking</li>
+                            <li>Team performance metrics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 gradient-text">Community & Growth</h3>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Knowledge-sharing space with blogs and tutorials</li>
+                            <li>Host hackathons and competitions</li>
+                            <li>Weekly features of successful projects</li>
+                            <li>Mentorship program with industry experts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Differentiators Section -->
+        <section id="differentiators" class="section bg-white">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2 class="text-3xl font-bold text-center mb-12">Platform Differentiators</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="platform-differentiator">
+                        <h3 class="text-xl font-semibold mb-3">Verifiable Proof of Work</h3>
+                        <p>Blockchain-backed certificates provide immutable and verifiable evidence of project contributions, far more robust than traditional endorsements.</p>
+                    </div>
+                    
+                    <div class="platform-differentiator">
+                        <h3 class="text-xl font-semibold mb-3">AI Teammate Recommender</h3>
+                        <p>Advanced AI algorithms suggest ideal team members based on skills, personality, and past collaboration success, optimizing team dynamics.</p>
+                    </div>
+                    
+                    <div class="platform-differentiator">
+                        <h3 class="text-xl font-semibold mb-3">Monetized Open-Source Work</h3>
+                        <p>Students can sell their reusable code and templates, earning revenue even before graduation and fostering a micro-marketplace.</p>
+                    </div>
+                    
+                    <div class="platform-differentiator">
+                        <h3 class="text-xl font-semibold mb-3">Hackathon-to-Startup Pipeline</h3>
+                        <p>Integrated funding and visibility mechanisms turn winning hackathon projects into viable startups directly within the platform.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <p class="text-lg text-slate-800">These differentiators elevate the platform beyond a mere job board, creating a holistic ecosystem for student development and entrepreneurial success.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Stack Section -->
+        <section id="tech" class="section">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2 class="text-3xl font-bold text-center mb-12">Technical Architecture: Built for Scale</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Microservices Architecture</h3>
+                        <p class="text-slate-700 mb-4">To ensure the platform is robust, secure, and scalable, we implement a microservice-based architecture that allows independent scaling of services and efficient traffic management.</p>
+                        
+                        <div class="bg-slate-100 p-4 rounded-lg mb-6">
+                            <h4 class="font-semibold mb-2">Key Components:</h4>
+                            <ul class="list-disc list-inside text-slate-700">
+                                <li><strong>Auth Service:</strong> Handles JWT, cookies, and refresh tokens</li>
+                                <li><strong>User Service:</strong> Manages profiles, resumes, skills, and reputation</li>
+                                <li><strong>Project Service:</strong> For project posting, team management, and certificates</li>
+                                <li><strong>Chat Service:</strong> Real-time messaging with WebSockets</li>
+                                <li><strong>File Service:</strong> Manages file uploads via AWS S3/Cloudinary</li>
+                                <li><strong>Analytics Service:</strong> Stores IP, location, and activity logs</li>
+                                <li><strong>API Gateway:</strong> Central entry point for all service traffic</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Tech Stack</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="tech-stack-item">
+                                <h4 class="font-semibold">Frontend</h4>
+                                <p>React (Next.js) + Tailwind CSS</p>
+                            </div>
+                            <div class="tech-stack-item">
+                                <h4 class="font-semibold">Backend</h4>
+                                <p>Node.js + Express/NestJS</p>
+                            </div>
+                            <div class="tech-stack-item">
+                                <h4 class="font-semibold">Database</h4>
+                                <p>MongoDB with Mongoose</p>
+                            </div>
+                            <div class="tech-stack-item">
+                                <h4 class="font-semibold">Cache</h4>
+                                <p>Redis for frequent queries</p>
+                            </div>
+                            <div class="tech-stack-item">
+                                <h4 class="font-semibold">Real-time</h4>
+                                <p>Socket.io or WebSockets</p>
+                            </div>
+                            <div class="tech-stack-item">
+                                <h4 class="font-semibold">Storage</h4>
+                                <p>AWS S3 for files</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-3">Scalability & Performance</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold">Database Scalability</h4>
+                            <p class="text-sm">Sharding & Replication in MongoDB Atlas, indexing, connection pooling, and archival strategy for old data.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Authentication & Security</h4>
+                            <p class="text-sm">JWT + Refresh Tokens in HttpOnly Cookies, rate limiting, IP/device fingerprint logging, encrypted sensitive fields, HTTPS enforcement.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Traffic & Performance</h4>
+                            <p class="text-sm">API Gateway, Load Balancers, stateless services, robust caching strategies, lazy loading/pagination.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Deployment Strategy</h4>
+                            <p class="text-sm">Docker containerization, Kubernetes orchestration, CI/CD pipelines, Blue-Green Deployment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="section bg-white">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2 class="text-3xl font-bold text-center mb-12">Development Roadmap & Launch Strategy</h2>
+                
+                <div class="phase-timeline mb-12">
+                    <div class="phase-timeline-item">
+                        <h3 class="text-xl font-semibold mb-2">Phase 1: MVP Launch (0-3 Months)</h3>
+                        <p class="text-slate-700 mb-2">Focus on core features: project posting, basic team matching, messaging, user profiles, and simple ratings.</p>
+                        <p class="text-sm text-slate-600"><strong>Target:</strong> 1,000 users, 50 completed projects</p>
+                        <p class="text-sm text-slate-600"><strong>Strategy:</strong> Target 3-5 universities, partner with departments, organize launch hackathons</p>
+                    </div>
+                    
+                    <div class="phase-timeline-item">
+                        <h3 class="text-xl font-semibold mb-2">Phase 2: Growth (3-9 Months)</h3>
+                        <p class="text-slate-700 mb-2">Introduce AI matching, certificate generation, gamification, and payment systems, alongside a mobile app.</p>
+                        <p class="text-sm text-slate-600"><strong>Target:</strong> 10,000 users, 500 completed projects</p>
+                        <p class="text-sm text-slate-600"><strong>Strategy:</strong> Expand to 20-30 universities, implement referral programs, partner with coding bootcamps</p>
+                    </div>
+                    
+                    <div class="phase-timeline-item">
+                        <h3 class="text-xl font-semibold mb-2">Phase 3: Enterprise Scale (9+ Months)</h3>
+                        <p class="text-slate-700 mb-2">Integrate blockchain certificates, build a full marketplace, and establish enterprise partnerships for global expansion.</p>
+                        <p class="text-sm text-slate-600"><strong>Target:</strong> 100,000+ users, 5,000+ projects monthly</p>
+                        <p class="text-sm text-slate-600"><strong>Strategy:</strong> Corporate partnerships for recruitment pipelines, integrate with major universities' career services</p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4">Marketing & Acquisition Strategy</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <h4 class="font-semibold">Organic Growth</h4>
+                            <ul class="list-disc list-inside text-sm text-slate-700">
+                                <li>Content marketing</li>
+                                <li>Community building</li>
+                                <li>Success story amplification</li>
+                                <li>SEO optimization</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Paid Acquisition</h4>
+                            <ul class="list-disc list-inside text-sm text-slate-700">
+                                <li>University-specific advertising</li>
+                                <li>LinkedIn campus targeting</li>
+                                <li>YouTube sponsorships</li>
+                                <li>Podcast sponsorships</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Partnerships</h4>
+                            <ul class="list-disc list-inside text-sm text-slate-700">
+                                <li>University partnerships</li>
+                                <li>Student organization alliances</li>
+                                <li>Corporate sponsorships</li>
+                                <li>Accelerator partnerships</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="max-w-4xl mx-auto w-full text-center">
+                <h2 class="text-3xl font-bold mb-6">Igniting Innovation, Empowering Futures</h2>
+                <p class="text-xl text-slate-700 mb-8">We are excited to partner with you in fostering the next generation of innovators and leaders. Let's build the future together.</p>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6">Request More Information</h3>
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                            <input type="email" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Organization</label>
+                            <input type="text" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Role</label>
+                            <input type="text" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-shadow">Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center text-white mr-3">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <span class="font-bold text-xl">CodeLift</span>
+                    </div>
+                    <p class="text-slate-400">Empowering students to transform ideas into reality through collaboration and innovation.</p>
+                </div>
+
+                <script>
+                    const requestFullDeck = () => {
+                        window.location.href = 'index.html';
+                    };
+                </script>
