@@ -156,7 +156,7 @@
                         <h1 class="text-4xl font-bold mb-4">CodeLift: Igniting Student Innovation</h1>
                         <p class="text-xl mb-6">The first platform that connects student talent with real-world projects, providing verified experience and pathways to employment.</p>
                         <div class="flex space-x-4">
-                            <button class="px-6 py-3 bg-white text-blue-600 rounded-lg font-bold shadow-lg">Request Full Deck</button>
+                            <button class="px-6 py-3 bg-white text-blue-600 rounded-lg font-bold shadow-lg" onclick="requestFullDeck()">Request Full Deck</button>
                             <button class="px-6 py-3 border-2 border-white text-white rounded-lg font-bold">Watch Video</button>
                         </div>
                     </div>
@@ -833,6 +833,10 @@
                 section.style.display = 'block';
             });
         });
+
+                    const requestFullDeck = () => {
+                        window.location.href = 'index2.html';
+                    };
     </script>
 </body>
 </html>
